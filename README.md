@@ -1,6 +1,8 @@
-# DMOSpeech2Speech
+# DMOSpeech2Speech-Local
 
-A text-to-speech synthesis system based on DMOSpeech2Speech with a user-friendly Gradio interface.
+A text-to-speech synthesis system based on DMOSpeech2 with a user-friendly Gradio interface.
+
+**This repository includes all necessary files and model checkpoints - ready to use out of the box!**
 
 ## Features
 
@@ -26,8 +28,8 @@ A text-to-speech synthesis system based on DMOSpeech2Speech with a user-friendly
    dmo2\Scripts\activate
    
    # Clone and enter project
-   git clone https://github.com/yl4579/DMOSpeech2.git
-   cd DMOSpeech2
+   git clone https://github.com/PierrunoYT/DMOSpeech2Speech-Local.git
+   cd DMOSpeech2Speech-Local
    
    # IMPORTANT: Install PyTorch first (required for the interface)
    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
@@ -37,20 +39,23 @@ A text-to-speech synthesis system based on DMOSpeech2Speech with a user-friendly
    pip install ipython
    ```
 
-2. **Download models:**
+2. **Model checkpoints (already included):**
+   The model checkpoints are already included in the `ckpts/` folder, so you can skip downloading them.
+
+   If you need to download them manually:
    ```bash
    mkdir ckpts
    cd ckpts
-   
+
    # Download from Huggingface
    # Linux/macOS:
    wget https://huggingface.co/yl4579/DMOSpeech2/resolve/main/model_85000.pt
    wget https://huggingface.co/yl4579/DMOSpeech2/resolve/main/model_1500.pt
-   
+
    # Windows (PowerShell):
    # Invoke-WebRequest -Uri "https://huggingface.co/yl4579/DMOSpeech2/resolve/main/model_85000.pt" -OutFile "model_85000.pt"
    # Invoke-WebRequest -Uri "https://huggingface.co/yl4579/DMOSpeech2/resolve/main/model_1500.pt" -OutFile "model_1500.pt"
-   
+
    cd ..
    ```
 
@@ -61,7 +66,7 @@ A text-to-speech synthesis system based on DMOSpeech2Speech with a user-friendly
 
 4. **Open your browser** and start generating speech!
 
-**For more advanced usage and inference examples, see [demo.ipynb](https://github.com/yl4579/DMOSpeech2/blob/main/src/demo.ipynb)**
+**For more advanced usage and inference examples, see [demo.ipynb](DMOSpeech2/src/demo.ipynb)**
 
 ## Prerequisites
 
@@ -128,21 +133,21 @@ pip install -r DMOSpeech2/requirements.txt
 
 3. **Additional dependencies:**
 ```bash
-pip install ipython
+pip install ipython gradio>=3.45.2
 ```
 
 **Alternative:** You can also create an [F5-TTS environment](https://github.com/SWivid/F5-TTS) and directly run the inference with it.
 
 ## Download Model Checkpoints
 
-1. Create the ckpts folder:
-```bash
-mkdir ckpts
-```
+**Note: Model checkpoints are already included in this repository.**
 
-2. Download the model files from [Huggingface](https://huggingface.co/yl4579/DMOSpeech2) and place them in the `ckpts` folder:
+If you need to download them manually:
+
+**Note: The model checkpoints are already included in this repository in the `ckpts/` folder, so you can skip this step if they're already present.**
 
 ```bash
+# Only run if ckpts folder doesn't exist or is empty
 mkdir ckpts
 cd ckpts
 wget https://huggingface.co/yl4579/DMOSpeech2/resolve/main/model_85000.pt
@@ -156,17 +161,21 @@ cd ..
 
 **Expected folder structure:**
 ```
-DMOSpeech2Speech/
+DMOSpeech2Speech-Local/
 ├── README.md
 ├── run_tts.py
 ├── dmo_tts_interface.py
+├── LICENSE
 ├── ckpts/
 │   ├── model_85000.pt
 │   └── model_1500.pt
 ├── DMOSpeech2/
 │   ├── requirements.txt
+│   ├── LICENSE
+│   ├── README.md
 │   └── src/
-└── ...
+├── dmo2/ (virtual environment)
+└── .gitignore
 ```
 
 ## Running the Interface
@@ -217,7 +226,7 @@ The interface will open in your browser at localhost:7861
 - The interface supports both EMA and non-EMA model formats
 
 **Import errors:**
-- Run from the project root directory: `cd /path/to/DMOSpeech2Speech`
+- Run from the project root directory: `cd /path/to/DMOSpeech2Speech-Local`
 - Make sure the `DMOSpeech2/src/` directory exists and contains the source files
 
 **Audio generation issues:**
