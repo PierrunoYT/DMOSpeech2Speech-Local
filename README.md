@@ -2,7 +2,7 @@
 
 A text-to-speech synthesis system based on DMOSpeech2 with a user-friendly Gradio interface.
 
-**This repository includes all necessary files and model checkpoints - ready to use out of the box!**
+**Note: You'll need to download the model checkpoints separately (see instructions below).**
 
 ## Features
 
@@ -39,10 +39,7 @@ A text-to-speech synthesis system based on DMOSpeech2 with a user-friendly Gradi
    pip install ipython
    ```
 
-2. **Model checkpoints (already included):**
-   The model checkpoints are already included in the `ckpts/` folder, so you can skip downloading them.
-
-   If you need to download them manually:
+2. **Download model checkpoints:**
    ```bash
    mkdir ckpts
    cd ckpts
@@ -140,11 +137,7 @@ pip install ipython gradio>=3.45.2
 
 ## Download Model Checkpoints
 
-**Note: Model checkpoints are already included in this repository.**
-
-If you need to download them manually:
-
-**Note: The model checkpoints are already included in this repository in the `ckpts/` folder, so you can skip this step if they're already present.**
+**Important: Model checkpoints are NOT included in this repository due to their large size. You must download them:**
 
 ```bash
 # Only run if ckpts folder doesn't exist or is empty
@@ -159,22 +152,22 @@ cd ..
 - `model_85000.pt` - DMOSpeech checkpoint (including teacher for teacher-guided sampling)
 - `model_1500.pt` - GRPO-finetuned duration predictor checkpoint
 
-**Expected folder structure:**
+**Expected folder structure after setup:**
 ```
 DMOSpeech2Speech-Local/
 ├── README.md
 ├── run_tts.py
 ├── dmo_tts_interface.py
 ├── LICENSE
-├── ckpts/
-│   ├── model_85000.pt
-│   └── model_1500.pt
+├── ckpts/ (you need to create and populate this)
+│   ├── model_85000.pt (download required)
+│   └── model_1500.pt (download required)
 ├── DMOSpeech2/
 │   ├── requirements.txt
 │   ├── LICENSE
 │   ├── README.md
 │   └── src/
-├── dmo2/ (virtual environment)
+├── dmo2/ (virtual environment - create this)
 └── .gitignore
 ```
 
@@ -217,12 +210,13 @@ The interface will open in your browser at localhost:7861
 
 **Interface won't start:**
 - Make sure you're in the project root directory (where `README.md` is located)
-- Check that you have the `ckpts/` folder with model files
+- **Check that you have downloaded the model files to the `ckpts/` folder**
 - Verify all dependencies are installed: `pip install -r DMOSpeech2/requirements.txt`
-- Install additional dependencies: `pip install ipython`
+- Install additional dependencies: `pip install ipython gradio>=3.45.2`
 
 **Model loading errors:**
-- Ensure your checkpoint files are in the `ckpts/` directory
+- **Ensure you have downloaded the checkpoint files to the `ckpts/` directory**
+- Check that both `model_85000.pt` and `model_1500.pt` are present
 - The interface supports both EMA and non-EMA model formats
 
 **Import errors:**
